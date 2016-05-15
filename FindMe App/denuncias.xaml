@@ -1,0 +1,163 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="FindMe_App.denuncias"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideDownFadeOut"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideLeftFadeIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideRightFadeOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideLeftFadeOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Loaded="LayoutRoot_Loaded" >
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="/imagenes/findme_fondo.jpg"/>
+        </Grid.Background>
+       
+        <!--Pivot Control-->
+        <phone:Pivot Title="" Foreground="White" Margin="0,70,0,0" FontFamily="Arial" FontSize="9">
+           
+            <!--Pivot item one-->
+            <phone:PivotItem x:Name="pvttelef" Header="Telef" FontSize="12" FontFamily="Arial" >
+                <Grid HorizontalAlignment="Left" Height="900" VerticalAlignment="Top" Width="456">
+                    <ListBox  Width="455">
+                        <ListBox.Background>
+                            <SolidColorBrush Color="#FF632424" Opacity="0.5"/>
+                        </ListBox.Background>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <Ellipse Height="198" Stroke="Black" Width="210"  Margin="10,10,30,0" >
+                                <Ellipse.Fill>
+                                    <ImageBrush Stretch="Fill" ImageSource="/imagenes/delitos.png"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <StackPanel>
+                                <TextBlock Height="90"  TextWrapping="Wrap" Text="Ministerio del Interior" VerticalAlignment="Top" Width="174" FontSize="30" FontWeight="Bold"/>
+                                <StackPanel  Orientation="Horizontal" Height="90">
+                                    <TextBlock x:Name="tbldelitos" Height="70" Margin="0,10,0,0" TextAlignment="Center" TextWrapping="Wrap" Text="1800-Delitos" VerticalAlignment="Top" Width="120" FontSize="30"/>
+                                    <Button x:Name="btndelitos" Height="80" Width="80"  BorderBrush="{StaticResource TransparentBrush}" Click="btndelitos_Click" >
+                                        <Button.Background>
+                                            <ImageBrush Stretch="Fill" ImageSource="/imagenes/call.png"/>
+                                        </Button.Background>
+                                    </Button>
+                                </StackPanel>
+
+                            </StackPanel>
+                        </StackPanel>
+
+
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <Ellipse Height="198" Stroke="Black" Width="210" Margin="10,10,30,0">
+                                <Ellipse.Fill>
+                                    <ImageBrush Stretch="Fill" ImageSource="/imagenes/dinased.png"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <StackPanel>
+                                <TextBlock Height="50" TextWrapping="Wrap" Text="Dinased:" VerticalAlignment="Top" Width="174" FontSize="35" FontWeight="Bold"/>
+                                <StackPanel  Orientation="Horizontal" Height="70">
+                                    <TextBlock x:Name="tbldinased1" Height="40" Margin="0,25,0,0" TextWrapping="Wrap" Text="2923420" VerticalAlignment="Top" Width="120" FontSize="25"/>
+                                    <Button x:Name="btndinased1" Height="80" Width="80" Margin="0,0,0,0" BorderBrush="{StaticResource TransparentBrush}" Click="btndinased1_Click">
+                                        <Button.Background>
+                                            <ImageBrush Stretch="Fill" ImageSource="/imagenes/call.png"/>
+                                        </Button.Background>
+                                    </Button>
+                                </StackPanel>
+                                <StackPanel  Orientation="Horizontal" Height="70">
+                                    <TextBlock x:Name="tbldinased2" Margin="0,20,0,0" Height="40" TextWrapping="Wrap" Text="2263495" VerticalAlignment="Top" Width="120" FontSize="25" />
+                                    <Button x:Name="btndinased2" Height="80" Width="80" BorderBrush="{StaticResource TransparentBrush}" Click="btndinased2_Click">
+                                        <Button.Background>
+                                            <ImageBrush Stretch="Fill" ImageSource="/imagenes/call.png"/>
+                                        </Button.Background>
+                                    </Button>
+                                </StackPanel>
+                            </StackPanel>
+
+                        </StackPanel>
+                        
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <Ellipse Height="198" Stroke="Black" Width="210"  Margin="10,10,30,0" >
+                                <Ellipse.Fill>
+                                    <ImageBrush Stretch="Fill" ImageSource="/imagenes/ecu.png"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <StackPanel>
+                                <TextBlock Height="90"  TextWrapping="Wrap" Text="Ecu 911:" VerticalAlignment="Top" Width="174" FontSize="35" FontWeight="Bold"/>
+                                <StackPanel  Orientation="Horizontal" Height="70">
+                                    <TextBlock x:Name="tblecu" Height="46" Margin="0,20,0,0" TextAlignment="Center" TextWrapping="Wrap" Text="911" VerticalAlignment="Top" Width="120" FontSize="25"/>
+                                    <Button x:Name="btnecu" Height="80" Width="80"  BorderBrush="{StaticResource TransparentBrush}" Click="btnecu_Click">
+                                        <Button.Background>
+                                            <ImageBrush Stretch="Fill" ImageSource="/imagenes/call.png"/>
+                                        </Button.Background>
+                                    </Button>
+                                </StackPanel>
+                                
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Ellipse Height="198" Stroke="{StaticResource TransparentBrush}" Width="210"  Margin="10,10,30,0">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="/imagenes/policia.png" Stretch="None"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <StackPanel>
+                                <TextBlock Height="90" TextWrapping="Wrap" Text="Policia:" VerticalAlignment="Top" Width="174" FontSize="35" FontWeight="Bold"/>
+                                <StackPanel  Orientation="Horizontal" Height="70">
+                                    <TextBlock x:Name="tblpolicia" Height="46" Margin="0,20,0,0" TextAlignment="Center" TextWrapping="Wrap" Text="101" VerticalAlignment="Top" Width="120" FontSize="25" />
+                                    <Button x:Name="btnpolicia" Height="80" Width="80"  BorderBrush="{StaticResource TransparentBrush}" Click="btnpolicia_Click">
+                                        <Button.Background>
+                                            <ImageBrush Stretch="Fill" ImageSource="/imagenes/call.png"/>
+                                        </Button.Background>
+                                    </Button>
+                                </StackPanel>
+
+                            </StackPanel>
+                        </StackPanel>
+
+                    </ListBox>
+                </Grid>
+            </phone:PivotItem>
+
+            <!--Pivot item two-->
+            <phone:PivotItem x:Name="pvtinfo" Header="Info" FontFamily="Arial" FontSize="24">
+                <Grid  Height="601" Margin="0,10,0,0" Width="463">
+                    <ListBox BorderBrush="#FF0AAC0A" >
+                        <ListBox.Background>
+                            <SolidColorBrush Color="#FF632424" Opacity="0.5"/>
+                        </ListBox.Background>
+                        <TextBlock x:Name="txbdenuncia" Margin="10,10,0,0" Height="1101" TextWrapping="Wrap" VerticalAlignment="Top" Width="436" FontSize="25" Foreground="WhiteSmoke"/>
+                    </ListBox>
+                </Grid>
+            </phone:PivotItem>
+
+        </phone:Pivot>
+    </Grid>
+
+</phone:PhoneApplicationPage>

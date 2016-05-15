@@ -1,0 +1,82 @@
+﻿<phone:PhoneApplicationPage
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:maps="clr-namespace:Microsoft.Phone.Maps.Controls;assembly=Microsoft.Phone.Maps"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+   
+    xmlns:Toolkit="clr-namespace:Microsoft.Phone.Maps.Toolkit;assembly=Microsoft.Phone.Controls.Toolkit"
+    x:Class="FindMe_App.localizacion"
+   
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+
+
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideDownFadeOut"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideLeftFadeIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideRightFadeOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideLeftFadeOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <phone:PhoneApplicationPage.ApplicationBar >
+        <shell:ApplicationBar IsVisible="True" Mode="Default" >
+            <shell:ApplicationBarIconButton x:Name="btnyo" IconUri="/imagenes/gps.png" Text="yo" Click="btnyo_Click"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+<!--LayoutRoot is the root grid where all page content is placed-->
+	<Grid x:Name="LayoutRoot">
+
+		<Grid.Background>
+			<ImageBrush Stretch="Fill" ImageSource="/imagenes/findme_fondo.jpg"/>
+		</Grid.Background>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="auto"/>
+		</Grid.RowDefinitions>
+		<!--TitlePanel contains the name of the application and page title-->
+
+        <StackPanel Grid.Row="0" Margin="0,80,0,0" HorizontalAlignment="Center">
+        <!--<Image Width="100" Margin="-10,-10,0,0" Height="100" Source="/imagenes/icono.png" HorizontalAlignment="Left" Stretch="UniformToFill"/>
+            <Image Width="350" Margin="0,5,0,5" HorizontalAlignment="Center" Height="60" Source="/imagenes/letras/configuracion1.png" Stretch="Fill"/>-->
+        <TextBlock x:Name="txbgps" FontFamily="Arial" FontSize="50" Margin="0,0,0,0" Foreground="#FF86CD40"/>
+        </StackPanel>
+
+
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Margin="0,7,0,0" Grid.Row="1">
+            <TextBlock x:Name="txtlatitud" HorizontalAlignment="Left" Height="34" Margin="30,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" FontSize="24" FontWeight="Bold"/>
+            <TextBlock x:Name="txtlongitud" HorizontalAlignment="Left" Height="34" Margin="243,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" FontSize="24" FontWeight="Bold"/>
+            <TextBlock x:Name="txtestado" HorizontalAlignment="Left" Height="34" Margin="30,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="105" FontSize="24" FontWeight="Bold"/>
+            <TextBlock x:Name="txblatitud" HorizontalAlignment="Left" Height="30" Margin="150,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
+            <TextBlock x:Name="txblongitud" HorizontalAlignment="Left" Height="30" Margin="380,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
+            <TextBlock x:Name="txbestado" HorizontalAlignment="Left" Height="30" Margin="125,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
+            <maps:Map x:Name="MyMap"  Height="480" Margin="0,71,0,0" VerticalAlignment="Top" Width="456">
+                           </maps:Map>
+        </Grid>
+	</Grid>
+</phone:PhoneApplicationPage>

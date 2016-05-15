@@ -1,0 +1,83 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="FindMe_App.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+   
+    <phone:PhoneApplicationPage.Resources>
+        <Storyboard x:Name="intro" RepeatBehavior="forever">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.FontWeight)" Storyboard.TargetName="btnlogin">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <FontWeight>Bold</FontWeight>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.5">
+                    <DiscreteObjectKeyFrame.Value>
+                        <FontWeight>Bold</FontWeight>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+                <DiscreteObjectKeyFrame KeyTime="0:0:1">
+                    <DiscreteObjectKeyFrame.Value>
+                        <FontWeight>Bold</FontWeight>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+    </phone:PhoneApplicationPage.Resources>
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideDownFadeOut"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideLeftFadeIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideRightFadeOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideLeftFadeOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Margin="10,0" Loaded="LayoutRoot_Loaded">
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="/imagenes/findme_login.jpg"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+
+            <TextBlock x:Name="txbidioma" Text="Seleccione el Idioma / Choose the language" FontSize="18" Foreground="Black" Margin="16,355,22,383" FontFamily="Arial" HorizontalAlignment="Center" Width="398" FontWeight="Bold" TextWrapping="Wrap" TextAlignment="Center"/>
+            <RadioButton x:Name="rbtnes" Content="Español" HorizontalAlignment="Center" Background="#FF040404" Margin="142,385,126,297" BorderBrush="#FF4A6825" Foreground="Black" FontWeight="Bold" Width="168" FontFamily="Tunga" FontSize="27"/>
+            <RadioButton x:Name="rbtnen" Content="English" HorizontalAlignment="Center" Background="#FF040404" Margin="142,448,126,245" FontWeight="Bold" Foreground="Black" Width="168" BorderBrush="#FF4A6825" FontSize="27" FontFamily="Tunga"/>
+            <Button x:Name="btnlogin" ClickMode="Press" VerticalContentAlignment="Center" Content="" FontFamily="Tunga" FontSize="100" Click="btnlogin_Click" Background="{StaticResource TransparentBrush}" Margin="52,552,54,75" BorderBrush="{StaticResource TransparentBrush}" FontWeight="Bold" Padding="10,-20,10,6" Foreground="White"/>
+
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

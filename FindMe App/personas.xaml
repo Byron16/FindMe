@@ -1,0 +1,118 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="FindMe_App.personas"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideDownFadeOut"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideLeftFadeIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideRightFadeOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideLeftFadeOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot">
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="/imagenes/findme_fondo.jpg"/>
+        </Grid.Background>
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+
+
+        <StackPanel Grid.Row="0" Margin="0,80,0,10" Height="100" Orientation="Horizontal" HorizontalAlignment="Center">
+            <!-- <Image Width="100" Margin="-10,-10,0,0" Height="100" Source="/imagenes/icono.png" HorizontalAlignment="Left" Stretch="UniformToFill"/>
+            <Image Width="350" Margin="0,5,0,5" HorizontalAlignment="Center" Height="60" Source="/imagenes/letras/personas1.png" Stretch="Fill"/>-->
+            <TextBlock x:Name="txbpersonas" FontFamily="Tunga" FontSize="50" Margin="0,0,0,0" Foreground="White" Loaded="txbpersonas_Loaded"/>
+        </StackPanel>
+
+
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1">
+            <ListBox Height="596" VerticalAlignment="Top" Width="463" BorderBrush="#FF919191">
+                <ListBox.Background>
+                    <SolidColorBrush Color="#FF3E0101" Opacity="0.6"/>
+                </ListBox.Background>
+
+                <ListBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Height="192" Width="192" Margin="10,10,0,0" Source="/imagenes/personas/1.png" Stretch="Fill"/>
+                        <TextBlock Width="255" Margin="10,10,0,0"  Text="José Enrique Hernández Ramos, tiene 15 años y desapareció desde el día Miércoles 8" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </ListBoxItem>
+
+                <ListBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Height="192" Width="192" Margin="10,10,0,0" Source="/imagenes/personas/2.png" Stretch="Fill"/>
+                        <TextBlock Width="255" Margin="10,10,0,0"  Text="Juan Alberto Valdivieso Loza, desaparecido el 20/10/2014 en Quito, Estatura: 1.78, Piel:Triguena" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </ListBoxItem>
+
+                <ListBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Height="192" Width="192" Margin="10,10,0,0" Source="/imagenes/personas/3.png" Stretch="Fill"/>
+                        <TextBlock Width="255" Margin="10,10,0,0"  Text="Noe Panta, Desaparecido el 5/09/2014 en Quito sector de la forestal calle puerto principe y Chicán, Mide 1.50" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </ListBoxItem>
+
+                <ListBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Height="192" Width="192" Margin="10,10,0,0" Source="/imagenes/personas/4.png" Stretch="Fill"/>
+                        <TextBlock Width="255" Margin="10,10,0,0"  Text="Diego Fabian Chillagana Aldana, Desaparecio el 22/09/2014, Telef: 2910092" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </ListBoxItem>
+
+                <ListBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Height="192" Width="192" Margin="10,10,0,0" Source="/imagenes/personas/5.png" Stretch="Fill"/>
+                        <TextBlock Width="255" Margin="10,10,0,0"  Text="Guillermo Paul Flores Guaman, Edad 26 Anos, desaparecio 05/07/2011 en el norte de Quito, Tez blanca, ojos verdes, Mide 1.75 m , Cabello Negro " TextWrapping="Wrap"/>                        
+                    </StackPanel>
+                </ListBoxItem>
+
+                <ListBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Height="192" Width="192" Margin="10,10,0,0" Source="/imagenes/personas/6.png" Stretch="Fill"/>
+                        <TextBlock Width="255" Margin="10,10,0,0"  Text="Yessica Virginia Cueva Granda, desaparecio el 12/09/2014 en el terminal terrestre de Yantzaza, llamar al Telf: 0979717274 " TextWrapping="Wrap"/>                        
+                    </StackPanel>
+                </ListBoxItem>
+
+            </ListBox>
+
+
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

@@ -1,0 +1,188 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="FindMe_App.Menu"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideDownFadeOut"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideLeftFadeIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideRightFadeOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideLeftFadeOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="/imagenes/findme_fondo.jpg"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+       <!-- <StackPanel Grid.Row="0" Margin="0,10,0,10" Height="100" Orientation="Horizontal">
+            <Image Width="100" Margin="-10,-10,0,0" Height="100" Source="/imagenes/icono.png" HorizontalAlignment="Left" Stretch="UniformToFill"/>
+            <Image Width="350" Margin="0,5,0,5" HorizontalAlignment="Center" Height="70" Source="/imagenes/letras/fm1.png" Stretch="Fill"/>
+        </StackPanel>-->
+
+
+        <!--ContentPanel - place additional content here-->
+        <StackPanel Grid.Row="0" HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button x:Name="btnfacebook" Width="80" Height="65" Margin="0,0,10,0" BorderThickness="1,0" Click="btnfacebook_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="/imagenes/facebook.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="btntwitter" Width="72" Height="65" Margin="0,0,10,0" BorderThickness="3,0" Click= "btntwitter_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="/imagenes/twitter.png"/>
+                </Button.Background>
+            </Button>
+        </StackPanel>
+        <Grid x:Name="ContentPanel" Margin="0,90,0,0" Grid.Row="1" Loaded="ContentPanel_Loaded" >
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+
+            <StackPanel Grid.Row="0" Grid.Column="0" >
+                <Button x:Name="btnfoto"  Width="120" Height="120" Foreground="Red" ClickMode="Press" Click="btnfoto_Click" BorderBrush="{StaticResource TransparentBrush}" Padding="0" Margin="0">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/imagenes/findme_camara.png" Stretch="UniformToFill" />
+                    </Button.Background>
+                </Button>
+                <TextBlock x:Name="txbfoto"  Margin="0,-10,0,0" TextAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="30" FontFamily="Segoe WP"/>
+            </StackPanel>
+
+
+            <StackPanel Grid.Row="0" Grid.Column="1">
+                <Button x:Name="btnpersonas" Height="120" Width="120" Foreground="Red" Click="btnpersonas_Click" BorderBrush="{StaticResource TransparentBrush}" ClickMode="Press">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/imagenes/findme_persona.png"/>
+                    </Button.Background>
+                </Button>
+                <TextBlock x:Name="txbpersonas"  Margin="0,-10,0,0" TextAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="30" FontFamily="Segoe WP"/>
+            </StackPanel>
+
+
+            <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,40,0,0">
+                <Button x:Name="btncoincidencias" Width="120" Height="120" Foreground="Red" ClickMode="Press" Click="btncoincidencias_Click" BorderBrush="{StaticResource TransparentBrush}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/imagenes/findme_coincidencias.png" Stretch="UniformToFill"/>
+                    </Button.Background>
+                </Button>
+                <TextBlock x:Name="txbcoin"  Margin="0,-10,0,0" TextAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="30" FontFamily="Segoe WP"/>
+            </StackPanel>
+
+
+            <StackPanel  Grid.Row="1" Grid.Column="1" Margin="0,40,0,0">
+                <Button x:Name="btnlocalizacion" Width="120" Height="120" Foreground="Red" ClickMode="Press" Click="btnlocalizacion_Click" BorderBrush="{StaticResource TransparentBrush}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/imagenes/findme_localizacion.png"/>
+                    </Button.Background>
+                </Button>
+                <TextBlock x:Name="txbloca" Margin="0,-10,0,0" TextAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="30" FontFamily="Segoe WP"/>
+            </StackPanel>
+
+
+            <StackPanel Grid.Row="2" Grid.Column="0" Margin="0,40,0,0">
+                <Button x:Name="btndenuncias" Width="120" Height="120" Foreground="Red" ClickMode="Press" Click="btndenuncias_Click" BorderBrush="{StaticResource TransparentBrush}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/imagenes/findme_denuncias.png"/>
+                    </Button.Background>
+                </Button>
+                <TextBlock x:Name="txbdenun"  Margin="0,-10,0,0" TextAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="30" FontFamily="Segoe WP"/>
+            </StackPanel>
+
+
+            <StackPanel Grid.Row="2" Grid.Column="1" Margin="0,40,0,0">
+                <Button x:Name="btnsuge"  Width="120" Height="120" Foreground="Red" ClickMode="Press" BorderBrush="{StaticResource TransparentBrush}" Click="btnsuge_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/imagenes/findme_ideas.png"/>
+                    </Button.Background>
+                </Button>
+                <TextBlock x:Name="txbsuge"  Margin="0,-10,0,0" TextAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="30" FontFamily="Segoe WP"/>
+            </StackPanel>
+
+        </Grid>
+      <!--  <Grid Grid.Row="1" Margin="0,50,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="btntwitter"   Grid.Column="0" Width="90" Height="90" BorderBrush="{StaticResource TransparentBrush}" ClickMode="Press" Click="btntwitter_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="/imagenes/findme_twitter.png"/>
+                </Button.Background>
+            </Button>
+
+            <Button x:Name="btnfacebook"  Grid.Column="1" Width="90" Height="90" BorderBrush="{StaticResource TransparentBrush}" ClickMode="Press" Click="btnfacebook_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="/imagenes/findme_facebook.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="btnayuda"  Grid.Column="4" Width="90" Height="90" BorderBrush="{StaticResource TransparentBrush}" ClickMode="Press">
+                <Button.Background>
+                    <ImageBrush ImageSource="/imagenes/findme_ayuda.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="btnconfiguracion" Grid.Column="5" Width="90" Height="90" BorderBrush="{StaticResource TransparentBrush}" ClickMode="Press">
+                <Button.Background>
+                    <ImageBrush ImageSource="/imagenes/findme_configuracion.png"/>
+                </Button.Background>
+            </Button>
+            
+        </Grid> -->
+
+
+    </Grid>
+    <phone:PhoneApplicationPage.ApplicationBar >
+        <shell:ApplicationBar IsVisible="True" Mode="Default" >
+            <shell:ApplicationBarIconButton x:Name="btnayuda" IconUri="/imagenes/findme_ayuda.png" Text="ayuda"/>
+            <shell:ApplicationBarIconButton x:Name="btnconfig" IconUri="/imagenes/findme_configuracion.png" Text="config" Click="btnconfig_Click"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>
